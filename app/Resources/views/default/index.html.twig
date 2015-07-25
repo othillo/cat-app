@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9 marketing">
+            {% for image in xml.data.images.image %}
+            <div class="col-lg-3 align text-center">
+                <img class="img-circle" src="{{ image.url }}" alt="Generic placeholder image" width="200" height="200">
+                <h2>Cat #{{ loop.index }} ({{ image.id }})</h2>
+                <p>
+                    <a href="{{ image.source_url }}">{{ image.source_url }}</a>
+                </p>
+                <p>
+                    <a class="btn btn-default" href="/download/{{ image.id }}" role="button">Download</a>
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-lg-3">
+            <table class="table table-condensed">
+                <tr>
+                    <th colspan="2">Downloaded</th>
+                </tr>
+                {% for file in cats %}
+                    <tr>
+                        <td>{{ file.timestamp | date('Y-m-d H:i:s') }}</td>
+                        <td>{{ file.basename }}</td>
+                        <td><a href="/delete/{{ file.basename }}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
