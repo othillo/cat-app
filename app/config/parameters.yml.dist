@@ -5,3 +5,4 @@ parameters:
     # A secret key that's used to generate certain security-related tokens
     secret:         MoarCats!
     cat-api.key:    ~
+    storage_dir:    "/tmp/cats"

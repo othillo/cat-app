@@ -1,5 +1,6 @@
 imports:
     - { resource: parameters.yml }
+    - { resource: parameters.php }
     - { resource: security.yml }
     - { resource: services.yml }
 
@@ -40,7 +41,7 @@ oneup_flysystem:
     adapters:
         public:
             local:
-                directory: "/tmp/cats"
+                directory: "%storage_dir%"
     filesystems:
         public:
             adapter: public
